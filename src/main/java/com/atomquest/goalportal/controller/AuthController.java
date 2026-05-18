@@ -9,10 +9,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173","https://goalportal-frontend.vercel.app/"})
 public class AuthController {
 
     @Autowired
@@ -30,6 +31,11 @@ public class AuthController {
         );
         return userRepository.save(user);
     }
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
 
     @PostMapping("/Login")
     public Map<String,String>login(
