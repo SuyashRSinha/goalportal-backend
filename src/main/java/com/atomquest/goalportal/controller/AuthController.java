@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = {"http://localhost:5173","https://goalportal-frontend.vercel.app/"})
+@CrossOrigin(origins = {"http://localhost:5173","https://goalportal-frontend.vercel.app"})
 public class AuthController {
 
     @Autowired
