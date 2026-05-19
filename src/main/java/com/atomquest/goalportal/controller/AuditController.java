@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/audit")
-@CrossOrigin("*")
 
 public class AuditController {
     @Autowired
