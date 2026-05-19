@@ -30,19 +30,9 @@ public class SecurityConfig {
     ) throws Exception {
 
         http
-                .cors(cors -> {})
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-        .requestMatchers(
-                org.springframework.http.HttpMethod.OPTIONS,
-                "/**"
-        ).permitAll()
-        .anyRequest().permitAll()
-);
-                );
-
-        return http.build();
-    }
+        .anyRequest().permitAll());
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
