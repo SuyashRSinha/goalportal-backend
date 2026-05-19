@@ -12,7 +12,7 @@ public class corsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("https://goalportal-frontend.vercel.app");
+        config.addAllowedOrigin("https://goalportal-frontend.vercel.app/");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.setAllowCredentials(true);
