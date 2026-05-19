@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173","https://YOUR-VERCEL-URL.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:5173","https://goalportal-frontend.vercel.app"})
 @RequestMapping("/goals")
 
 public class GoalController {
