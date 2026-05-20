@@ -29,7 +29,6 @@ public class GoalController {
     @Autowired
     private GoalRepository goalRepository;
 
-    // CREATE GOAL
 
     @PostMapping("/create")
     public Goal createGoal(
@@ -39,7 +38,6 @@ public class GoalController {
         return goalService.createGoal(goal);
     }
 
-    // GET ALL GOALS
 
     @GetMapping
     public List<Goal> getAllGoals() {
@@ -47,7 +45,6 @@ public class GoalController {
         return goalService.getAllGoals();
     }
 
-    // GET EMPLOYEE GOALS
 
     @GetMapping("/{email}")
     public List<Goal> getGoals(
@@ -79,13 +76,9 @@ public class GoalController {
 
         StringBuilder csv = new StringBuilder();
 
-        // HEADER
-
         csv.append(
                 "Employee Email,Goal Title,Target Value,Actual Achievement,Progress Status,Approval Status\n"
         );
-
-        // DATA
 
         for (Goal goal : goals) {
 
@@ -132,29 +125,21 @@ public class GoalController {
             Map<String, Object> data =
                     new HashMap<>();
 
-            // EMPLOYEE
 
             data.put(
                     "employeeEmail",
                     goal.getEmployeeEmail()
             );
 
-            // GOAL
-
             data.put(
                     "goalTitle",
                     goal.getTitle()
             );
 
-            // QUARTER
-
             data.put(
                     "quarter",
                     goal.getQuarter()
             );
-
-            // EMPLOYEE CHECK-IN STATUS
-
             boolean employeeCompleted =
 
                     goal.getActualAchievement() != null;
@@ -163,16 +148,15 @@ public class GoalController {
                     "employeeCompleted",
                     employeeCompleted
             );
-
-            // MANAGER REVIEW STATUS
-
             boolean managerReviewed =
 
-                    goal.getManagerComment() != null
+        goal.getManagerReviewComment() != null
 
-                            &&
+        &&
 
-                            !goal.getManagerReviewComment().isEmpty();
+        !goal.getManagerReviewComment()
+                .trim()
+                .isEmpty();
 
             data.put(
                     "managerReviewed",
@@ -183,9 +167,6 @@ public class GoalController {
                     "approvalStatus",
                     goal.getApprovalStatus()
             );
-
-            // FINAL STATUS
-
             String status;
 
             if (
@@ -331,9 +312,6 @@ public class GoalController {
 
         return response;
     }
-
-    // APPROVE GOAL
-
     @PutMapping("/approve/{id}")
     public Goal approveGoal(
             @PathVariable Long id
@@ -359,9 +337,6 @@ public class GoalController {
 
         return goalService.saveGoal(goal);
     }
-
-    // REJECT GOAL
-
     @PutMapping("/reject/{id}")
     public Goal rejectGoal(
             @PathVariable Long id
@@ -373,9 +348,6 @@ public class GoalController {
 
         return goalService.saveGoal(goal);
     }
-
-    // REWORK GOAL
-
     @PutMapping("/rework/{id}")
     public Goal returnForRework(
 
@@ -394,9 +366,6 @@ public class GoalController {
 
         return goalService.saveGoal(goal);
     }
-
-    // QUARTERLY CHECKIN
-
     @PutMapping("/checkin/{id}")
     public Goal updateQuarterlyCheckin(
 
@@ -410,9 +379,6 @@ public class GoalController {
                 updatedGoal
         );
     }
-
-    // MANAGER REVIEW
-
     @PutMapping("/manager-review/{id}")
     public Goal updatedManagerReview(
 
@@ -426,9 +392,6 @@ public class GoalController {
                 updatedGoal
         );
     }
-
-    // SHARED GOAL
-
     @PostMapping("/shared")
     public String createSharedGoal(
 
@@ -458,9 +421,6 @@ public class GoalController {
                         weightage
                 );
     }
-
-    // UPDATE SHARED KPI WEIGHTAGE
-
     @PutMapping("/update-weightage/{id}")
 
     public Goal updateWeightage(
