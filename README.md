@@ -123,10 +123,10 @@ Employee
 Email: suyash@gmail.com
 Password: 12345,
 Manager:
-Email: manager@gmail.com
+Email: manager@atomquest.com
 Password: manager123,
 Admin
-Email: admin@gmail.com
+Email: admin@atomquest.com
 Password: admin123,
 
 Architecture
